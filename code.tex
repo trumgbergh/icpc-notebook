@@ -15,6 +15,12 @@
     \par \textbf{Time Complexity:} $\mathcal{O}(n^3)$
     \inputminted{cpp}{library/graphs/floyd_warshall.cpp}
 
+  \subsection{Topological Sort}
+    \par \textbf{Usage:} Returns a valid linear ordering of a DAG.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(V + E)$
+    \inputminted{cpp}{library/graphs/topo_sort.cpp}
+
   \subsection{Dijkstra}
     \par \textbf{Usage:} Finding the shortest paths from a single starting node $s$ to all other nodes in the graph where edge weights are non-negative.
     \newline
@@ -84,9 +90,11 @@ to the segtree default. Root must be 0.
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$
     \inputminted{cpp}{library/structures/dsu.hpp}
+
   \subsection{Matrix}
     \par \textbf{Usage:} Basic operations on square matrices
     \inputminted{cpp}{library/structures/matrix.cpp}
+
   \subsection{Dynamic Li Chao tree}
     \par \textbf{Usage:} Container where you can add segment of form kx+m, and query maximum/minimum values at point x.
     Userful for dynamic programming ("convex hull trick").
@@ -112,26 +120,31 @@ keep in).
     \par \textbf{Time Complexity:} $\mathcal{O}(S q + qn^2 /S^2)$
     \inputminted{cpp}{library/structures/online_mo.cpp}
 
-
-
   \subsection{Fenwick Tree}
     \par \textbf{Usage:}  Computes partial sums $a[0] + a[1] + ... + a[pos - 1]$, and updates single elements $a[i]$,
  * taking the difference between the old and new value.
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log N)$
     \inputminted{cpp}{library/structures/fenwick.cpp}
+
   \subsection{Fenwick Tree 2D}
     \par \textbf{Usage:} Computes sums $a[i,j]$ for all $i<I$, $j<J$, and increases single elements $a[i,j]$.
     Requires that the elements to be updated are known in advance (call fakeUpdate() before init()).
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log^2 N)$
     \inputminted{cpp}{library/structures/fenwick2d.cpp}
+
   \subsection{Lazy segment tree}
     \par \textbf{Usage:} Segment tree with ability to add or set values of large intervals, and compute max of intervals.
     Node* tr = new Node(v, 0, sz(v));
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log N)$
     \inputminted{cpp}{library/structures/lazytree.cpp}
+
+  \subsection{XOR Linear Basis (Extended Vector Implementation)}
+    \par \textbf{Usage:} Maintains a vector space basis for XOR operations using dynamically sized vectors. Handles max/min queries, coverage verification, and subset counting.
+    \par \textbf{Time Complexity:} $\mathcal{O}(\text{bits})$ per operation. Space: $\mathcal{O}(\text{bits})$.
+    \inputminted{cpp}{library/structures/xor_basis.cpp}
 
 \section{Maths}
   %\subsection{Modular Arithmetic}
@@ -256,3 +269,53 @@ $x$, other than $s[0...x]$ itself (abacaba -> 0010123).
     %\\
     %\par \textbf{Time Complexity:} 
     \inputminted{cpp}{library/geo/polygon.hpp}
+
+\section{Game Theory \& Combinatorial Games}
+
+\subsection{The Game Resolution Pipeline}
+\par To solve an unfamiliar impartial game during a contest, follow this process:
+\begin{enumerate}
+    \item \textbf{Verify Impartiality:} Ensure both players have identical move options from any state, and it is a normal play game (last move wins).
+    \item \textbf{Brute-Force SG Values:} Code a quick MEX script to calculate Grundy values ($G$) for small test inputs to detect structural patterns.
+    \item \textbf{Analyze the Pattern:} Look for:
+    \begin{itemize}
+        \item \textbf{Periodicity:} $G(x) = G(x \pmod P)$ where $P$ is the cycle length.
+        \item \textbf{Eliminable Invariants:} If an opponent's move can be perfectly mirrored/negated elsewhere, that component has zero impact on the game (e.g., ignore even steps in Staircase Nim).
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Sprague-Grundy Theorem}
+\par Any independent sub-game can be replaced by an equivalent Nim pile of size $G$. The total Grundy value of a combined game state is the XOR sum ($\oplus$) of its sub-games:
+$$G(\text{Game}) = G(\text{State}_1) \oplus G(\text{State}_2) \oplus \dots \oplus G(\text{State}_n)$$
+\begin{itemize}
+    \item $G(\text{Game}) \neq 0 \implies$ \textbf{Winning Position} (First player can force a win).
+    \item $G(\text{Game}) = 0 \implies$ \textbf{Losing Position} (Second player wins under perfect play).
+    \item $\text{MEX}(S)$ is the Minimum Excluded non-negative integer from the set of reachable states $S$.
+\end{itemize}
+
+\subsection{Nim Properties \& Variants}
+
+\subsubsection{1. Standard Nim}
+\par Game state is winning iff the XOR sum of all pile sizes $x_i$ is non-zero: $S = \bigoplus x_i \neq 0$.
+\par \textbf{To make a winning move:} Find a pile $i$ where $(x_i \oplus S) < x_i$, then reduce that pile to exactly $x_i \oplus S$.
+
+\subsubsection{2. Mis\`ere Nim (Last Take Loses)}
+\par Play using standard Nim strategies until a move can force \textbf{all} remaining piles to have a size of exactly 1.
+\begin{itemize}
+    \item If all piles are size 1, the first player wins iff the number of piles is \textbf{even}.
+    \item If at least one pile has size $> 1$, the first player wins iff standard $\bigoplus x_i \neq 0$.
+\end{itemize}
+
+\subsubsection{3. Subtraction Game}
+\par Players can remove at most $k$ objects from a single pile.
+$$G(x) = x \pmod{k+1}$$
+
+\subsection{Grundy Pattern-Finder Blueprint}
+\begin{minted}{cpp}
+int get_mex(const vector<int>& transitions) {
+    vector<bool> vis(transitions.size() + 1, false);
+    for (int x : transitions) if (x >= 0 && x <= (int)transitions.size()) vis[x] = true;
+    for (int i = 0; ; ++i) if (!vis[i]) return i;
+}
+// Run a small DP on state transitions to print patterns on scratch paper
+\end{minted}
