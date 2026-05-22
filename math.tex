@@ -1,0 +1,144 @@
+\section{Math}
+    \subsection{Equations}
+        $$ax^2 + bx + c = 0 \Rightarrow x = \frac{-b \pm \sqrt{ b^2 -4ac }}{2a}$$
+    \text{The extremum is given by} $x = -b/2a$.
+    \[
+    \begin{aligned}
+      ax + by &= e \\[2pt]
+      cx + dy &= f
+    \end{aligned}
+    \qquad \Rightarrow \qquad
+    \begin{aligned}
+      x &= \frac{ed - bf}{ad - bc} \\[6pt]
+      y &= \frac{af - ec}{ad - bc}
+    \end{aligned}
+    \]
+    \text{In general, given an equation} $Ax = b$, the solution to a variable $x_i$ is given by
+    $$
+    x_i = \frac{\det A_i'}{det A}
+    $$
+    where $A_i'$ is $A$ with the $i'$th column replaced by $b$.
+    \subsection{Trigonometry}
+        $$
+        \sin(v + w) = \sin v \cos w + \cos v \sin w
+        $$
+        $$
+        \cos(v + w) = \cos v \cos w - \sin v \sin w
+        $$
+        $$
+        \tan(v + w) = \frac{ \tan v + \tan w}{ 1 - \tan v \tan w}
+        $$
+        $$
+        \sin v + \sin w = 2 \sin \frac{v + w}{2}\cos \frac{v - w}{2}
+        $$
+        $$
+        \cos v + \cos w = 2 \cos \frac{v + w}{2}\cos \frac{v - w}{2}
+        $$
+    \subsection{Geometry}
+        \subsubsection{Triangles}
+            Side lengths: $a, b, c$ \\
+            Semiperimeter: $p = \frac{a + b + c}{2}$ \\
+            Area: $A = \sqrt{p(p - a)(p - b)(p - c)}$ \\
+            Circumradius: $R = \frac{abc}{4A}$ \\
+            Inradius: $r = \frac{A}{p}$ \\
+            Length of median (divides triangle into two equal-area triangles): $m_a = \frac{1}{2} \sqrt{2b^2 + 2c^2 - a^2}$. \\
+            Length of bisector (divides angles in two): $s_a = \sqrt{bc[1 - (\frac{a}{b + c})^2]}$ \\
+            Law of sines: $ \frac{\sin \alpha}{a} = \frac{\sin \beta}{b} =\frac{\sin \gamma}{c}$ \\
+            Law of cosines: $a^2 = b^2 + c^2 - bc \cos \alpha$ \\
+            Law of tangents: $\frac{a + b}{a - b} = \frac{\tan \frac{\alpha + \beta}{2}}{\tan \frac{\alpha - \beta}{2}}$
+    \subsection{Derivatives/Integrals}
+        \[
+        \renewcommand{\arraystretch}{1.4}       % a bit more vertical space
+        \begin{array}{@{}rcl@{\qquad}rcl@{}}
+        \dfrac{d}{dx}\sqrt[n]{x} &=& \dfrac{1}{n\sqrt[n]{x^{\,n-1}}} &
+        \dfrac{d}{dx}\log_a x &=& \dfrac{1}{x\ln a} \\[6pt]
+        
+        \dfrac{d}{dx}\sin x &=& \cos x &
+        \dfrac{d}{dx}\cos x &=& -\sin x \\[6pt]
+        
+        \dfrac{d}{dx}\tan x &=& \dfrac{1}{\cos^{2}\!x} &
+        \dfrac{d}{dx}\tan x &=& -\dfrac{1}{\sin^{2}\!x} \\[6pt]
+        
+        \dfrac{d}{dx}\arcsin x &=& \dfrac{1}{\sqrt{1-x^{2}}} &
+        \dfrac{d}{dx}\arccos x &=& -\dfrac{1}{\sqrt{1-x^{2}}} \\[6pt]
+        
+        \dfrac{d}{dx}\tan x &=& 1+\tan^{2}\!x &
+        \dfrac{d}{dx}\arctan x &=& \dfrac{1}{1+x^{2}}
+        \end{array}
+        \]
+        
+        %---------------------------
+        %  Integrals table
+        %---------------------------
+        \[
+        \renewcommand{\arraystretch}{1.4}
+        \begin{array}{@{}rcl@{\qquad}rcl@{}}
+        \displaystyle \int \tan ax \, dx &=& -\dfrac{\ln|\cos ax|}{a} &
+        \displaystyle \int x\sin ax \, dx &=& \dfrac{\sin ax - ax\cos ax}{a^{2}} \\[9pt]
+        
+        \displaystyle \int e^{-x^{2}}\,dx &=& \dfrac{\sqrt{\pi}}{2}\,\mathrm{erf}(x) &
+        \displaystyle \int xe^{ax}\,dx &=& \dfrac{e^{ax}}{a^{2}}\,(ax-1)
+        \end{array}
+        \]
+        
+        %---------------------------
+        %  Integration by parts
+        %---------------------------
+        \paragraph{Integration by parts:}
+        \[
+        \int_{a}^{b} f(x)g(x)\,dx
+           \;=\;
+           \bigl[F(x)g(x)\bigr]_{a}^{b}
+           \;-\;
+           \int_{a}^{b} F(x)g'(x)\,dx
+        \]
+    \subsection{Sums}
+        $$
+        c^a + c^{a + 1} + \dots +  c^b = \frac{c^{b + 1} - c^a}{c - 1}, c \neq 1
+        $$
+
+        $$
+            1 + 2 + 3 + \dots + n = \frac{n (n + 1)}{2}
+        $$
+
+        $$
+            1^2 + 2^2 + 3^2 + \dots + n^2 = \frac{n (2n + 1)(n + 1)}{6}
+        $$
+
+        $$
+            1^3 + 2^3 + 3^3 + \dots + n^3 = \frac{n^2(n + 1)^2}{4}
+        $$
+
+        $$
+            1^4 + 2^4 + 3^4 + \dots + n^4 = \frac{n(n + 1)(2n + 1)(3n^2 + 3n - 1)}{30}
+        $$
+    \subsection{Series}
+        $$
+        e^x = 1 + x + \frac{x^2}{2!} +\frac{x^3}{3!} + \dots, (-\infty < x < \infty)
+        $$
+
+        $$
+        \ln(1 + x) = x - \frac{x^2}{2!} + \frac{x^3}{3!} - \frac{x^4}{4!} + \dots, (-1 < x \leq 1)
+        $$
+
+        $$
+        \sqrt(1 + x) = 1 + \frac{x}{2} - \frac{x^2}{8} + \frac{2x^3}{32} - \frac{5x^4}{128}  + \dots, (-1 \leq x \leq 1)
+        $$
+
+        $$
+        \sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \dots, (-\infty < x < \infty)
+        $$
+
+        $$
+        \cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \dots, (-\infty < x < \infty)
+        $$
+    \subsection{Binomial expansion}
+        $$
+        (x + y)^n = \sum_{k = 0}^{n} \binom{n}{k} x^{k} y^{n - k}
+        $$
+    \subsection{Pisano period}
+        if $m$ and $n$ are coprime, then $k(mn) = lcm(k(m), k(n))$. \\
+        if $p$ is a prime, then $k(p^n)$ is a divisor of $p^{n - 1} k(p)$. \\
+        if $p > 5$ is a prime and $p = \pm 1 (mod 5)$, then $k(p)$ is a divisor of $p - 1$. \\
+        if $p > 5$ is a prime and $p \pmod \pm 2 (mod 5)$, then $k(p)$ is a divisor of 2(p + 1).
+

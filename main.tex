@@ -1,0 +1,56 @@
+\documentclass[fontsize=8pt,paper=landscape,usegeometry=true]{scrartcl}
+
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Margins
+\usepackage[left=0.4cm,right=0.2cm,bottom=0.3cm,top=0.3cm]{geometry}
+
+% Multicols
+\usepackage{multicol}
+\setlength\columnsep{30pt}
+
+% Font
+\renewcommand{\familydefault}{\sfdefault}
+
+% Math
+\usepackage{amsmath}
+
+% Code
+\usepackage{listings}
+\usepackage{minted}
+\renewcommand{\MintedPygmentize}{.env/bin/pygmentize}
+\setminted{
+  breaklines,
+  linenos,
+  frame=lines,
+  % framesep=2mm,
+  framesep=5pt,
+  baselinestretch=1.2,
+  numbersep=3pt,
+  mathescape=true
+}
+
+% Remove spaces
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{0pt}%
+  \setlength{\belowdisplayskip}{0pt}%
+  \setlength{\abovedisplayshortskip}{0pt}%
+  \setlength{\belowdisplayshortskip}{0pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+
+\usepackage{indentfirst}
+
+\begin{document}
+  \begin{multicols*}{3}
+    \tableofcontents
+    \input{template}
+    \input{math}
+    \input{code}
+    % \input{stl}
+  \end{multicols*}
+\end{document}

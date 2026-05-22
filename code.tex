@@ -1,0 +1,258 @@
+
+\section{Graph}
+  \subsection{Bellman Ford}
+    \par \textbf{Usage:} Calculate shortest paths from $s$ in a graph that might have negative edge weights. 
+    Unreachable nodes get $dist = inf$; nodes reachable through negative-weight cycles get $dis = -inf$.
+    Assume $V^2 max|w_i| < 2^{63}$. \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(VE)$
+    \inputminted{cpp}{library/graphs/bellman_ford.cpp}
+
+  \subsection{Floyd Warshall}
+    \par \textbf{Usage:} Calculates all-pairs shortest path in a directed graph that might have negative edge weights.
+    Input is an distance matrix $m$, where $m[i][j] = inf$ if $i$ and $j$ are not adjacent.
+    As output, $m[i][j]$ is set to the shortest distance between $i$ and $j$, $inf$ if no path, or $-inf$ if the path goes thorugh a negative-weight cycle.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(n^3)$
+    \inputminted{cpp}{library/graphs/floyd_warshall.cpp}
+
+  \subsection{Dijkstra}
+    \par \textbf{Usage:} Finding the shortest paths from a single starting node $s$ to all other nodes in the graph where edge weights are non-negative.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}((V + E)\log V)$
+    \inputminted{cpp}{library/graphs/dijkstra.cpp}
+
+  \subsection{XY BFS}
+    \par \textbf{Usage:} Use queue to find shortest path from single source when all edges have weight $W = X$ or $W = Y (X, Y >= 0)$
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(N + M)$
+    \inputminted{cpp}{library/graphs/xy_bfs.cpp}
+
+  \subsection{Strongly Connected Components}
+    \par \textbf{Usage:} Finds strongly connected components in a directed graph.
+    If vertices $u, v$ belong to the same component, we can reach $u$ from $v$ and vice versa.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(N + M)$
+    \inputminted{cpp}{library/graphs/scc.cpp}
+
+  \subsection{Brige \& Articulation Points}
+    \par \textbf{Usage:} Find bridges and articulation points (duplicate edges are ok).
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(N + M)$
+    \inputminted{cpp}{library/graphs/bridge_articulationpoints.cpp}
+  %\subsection{Floyd Warshall}
+  %  \par \textbf{Usage:} Calculates all-pairs shortest path in a directed graph that might have negative edge weights.
+  %  Input is an distance matrix $m$, where $m[i][j] = inf$ if $i$ and $j$ are not adjacent.
+  %  As output, $m[i][j]$ is set to the shortest distance between $i$ and $j$, $inf$ if no path, or $-inf$ if the path goes thorugh a negative-weight cycle.
+  %  \newline
+  %  \par \textbf{Time Complexity:} $\mathcal{O}(n^3)$
+  %  \inputminted{cpp}{library/graphs/floyd_warshall.cpp}
+
+  \subsection{2SAT}
+    \par \textbf{Usage:} Calculates a valid assignment to boolean variables $a, b, c,...$ to a $2-SAT$ problem so that an expresion becomes true, or reports that it is unsatisfiable.
+    Negated variables are represented by bit-inversions ($~x$).
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(N + E)$, where $N$ is the number of boolean variables, and $E$ is the number of clauses.
+    \inputminted{cpp}{library/graphs/twosat.cpp}
+  \subsection{HLD}
+    \par \textbf{Usage:} Decomposes a tree into vertex disjoint heavy paths and light edges such that the path from any leaf to the root contains at most log(n) light edges.
+Code does additive modifications and max queries, but can
+support commutative segtree modifications/queries on paths and subtrees.
+Takes as input the full adjacency list. VALS EDGES being true means that
+values are stored in the edges, as opposed to the nodes. All values initialized
+to the segtree default. Root must be 0.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}((\log N)^2)$
+    \inputminted{cpp}{library/graphs/hld.cpp}
+
+
+  \subsection{Euler Path}
+    \par \textbf{Usage:} Eulerian undirected/directed path/cycle algorithm.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(N + E)$, where $N$ is the number of boolean variables, and $E$ is the number of clauses.
+    \inputminted{cpp}{library/graphs/euler_path.cpp}
+
+\section{Structures}
+  \subsection{Order Statistic Tree}
+    \par \textbf{Usage:} A set (not a multiset) with support for finding the $n'$th element, and finding the index of an element. To get a map, change $null\_type$.
+    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$
+    \inputminted{cpp}{library/structures/order_tree.cpp}
+
+  \subsection{Union-Find Rollback}
+    \par \textbf{Usage:} Disjoint-set data structure with undo.
+    If undo is not needed, skip st, time() and rollback().
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$
+    \inputminted{cpp}{library/structures/dsu.hpp}
+  \subsection{Matrix}
+    \par \textbf{Usage:} Basic operations on square matrices
+    \inputminted{cpp}{library/structures/matrix.cpp}
+  \subsection{Dynamic Li Chao tree}
+    \par \textbf{Usage:} Container where you can add segment of form kx+m, and query maximum/minimum values at point x.
+    Userful for dynamic programming ("convex hull trick").
+    Can be changed by modifying T, f and unit.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$
+    \inputminted{cpp}{library/structures/lichao.cpp}
+
+  \subsection{RMQ}
+    \par \textbf{Usage:} Range Minimum Queries on an array. Returns $min(V[a], V[a + 1], ... V[b - 1])$ in constant time.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(1)$
+    \inputminted{cpp}{library/structures/sparse_table.hpp}
+  \subsection{Mo's algorithm}
+    \par \textbf{Usage:} Answer interval or tree path queries by finding an approximate TSP through the queries, and moving from one query to the next by adding/removing points at the ends.
+    If values are on tree edges, change
+step to add/remove the edge (a, c) and remove the initial add call (but
+keep in).
+    \inputminted{cpp}{library/structures/mo.cpp}
+  \subsection{Online mo}
+    \par \textbf{Usage:} Decompose array into blocks of size $S$ and sort queries that ask for sum, firstly based on the block which $l$ lies in and secondly by the block that $r$ lies in and finally by $t$. $t$ is the number of the update queries before this query.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(S q + qn^2 /S^2)$
+    \inputminted{cpp}{library/structures/online_mo.cpp}
+
+
+
+  \subsection{Fenwick Tree}
+    \par \textbf{Usage:}  Computes partial sums $a[0] + a[1] + ... + a[pos - 1]$, and updates single elements $a[i]$,
+ * taking the difference between the old and new value.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log N)$
+    \inputminted{cpp}{library/structures/fenwick.cpp}
+  \subsection{Fenwick Tree 2D}
+    \par \textbf{Usage:} Computes sums $a[i,j]$ for all $i<I$, $j<J$, and increases single elements $a[i,j]$.
+    Requires that the elements to be updated are known in advance (call fakeUpdate() before init()).
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log^2 N)$
+    \inputminted{cpp}{library/structures/fenwick2d.cpp}
+  \subsection{Lazy segment tree}
+    \par \textbf{Usage:} Segment tree with ability to add or set values of large intervals, and compute max of intervals.
+    Node* tr = new Node(v, 0, sz(v));
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log N)$
+    \inputminted{cpp}{library/structures/lazytree.cpp}
+
+\section{Maths}
+  %\subsection{Modular Arithmetic}
+  %  \inputminted{cpp}{library/maths/mod.hpp}
+  \subsection{Modnum}
+    \inputminted{cpp}{library/maths/modnum.hpp}
+  \subsection{Sieve of Eratosthenes}
+    \par \textbf{Usage:}Prime sieve for generating all primes up to a certain limit. isPrime$[i]$ is true iff $i$ is a prime.
+    \inputminted{cpp}{library/maths/sieve.cpp}
+  \subsection{Segmented Sieve of Eratosthenes}
+    \par \textbf{Usage:} Sometimes we need to find all prime numbers in a range $[L, R]$ of small size (e.g. $R - L + 1 \approx 1e7$), where $R$ can be very large (e.g. $1e12$). 
+%    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}((R - L + 1)\log \log(R) + \sqrt(R) \log \log(\sqrt(R)))$
+    \inputminted{cpp}{library/maths/segmented_sieve.cpp}
+  \subsection{FFT}
+    \par \textbf{Usage:} fft(a) computes $\hat f(k) = \sum_x a[x] \exp(2\pi i \cdot k x / N)$ for all $k$. N must be a power of 2.
+   Useful for convolution:
+   \texttt{conv(a, b) = c}, where $c[x] = \sum a[i]b[x-i]$.
+    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}(N \log N)$ with $N = |A| + |B|$
+
+    \inputminted{cpp}{library/maths/fft.cpp}
+
+  %\subsection{Primality Test}
+  %    \inputminted{cpp}{library/maths/primality.hpp}
+  %\subsection{Euclidean Algorithm}
+  %  \inputminted{cpp}{library/maths/euclidean.hpp}
+  \subsection{Extended Euclidean Algorithm}
+    \par \textbf{Usage:} Finds two integers $x$ and $y$, such that $ax+by=\gcd(a,b)$. If
+ you just need gcd, use the built in \texttt{\_\_gcd} instead.
+ If $a$ and $b$ are coprime, then $x$ is the inverse of $a \pmod{b}$.
+    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log \min(a, b)$
+
+    \inputminted{cpp}{library/maths/euclid.h}
+  \subsection{Euler's Totient Function}
+    \par \textbf{Usage:} \emph{Euler's $\phi$} function is defined as $\phi(n):=\#$ of positive integers $\leq n$ that are coprime with $n$.
+  $\phi(1)=1$, $p$ prime $\Rightarrow \phi(p^k)=(p-1)p^{k-1}$, $m,n$ coprime $\Rightarrow \phi(mn)=\phi(m)\phi(n)$.
+  If $n=p_1^{k_1}p_2^{k_2} ... p_r^{k_r}$ then $\phi(n) = (p_1-1)p_1^{k_1-1}...(p_r-1)p_r^{k_r-1}$.
+  $\phi(n)=n \cdot \prod_{p|n}(1-1/p)$.
+      \textbf{Euler's thm}: $a,n$ coprime $\Rightarrow a^{\phi(n)} \equiv 1 \pmod{n}$.
+     \textbf{Fermat's little thm}: $p$ prime $\Rightarrow a^{p-1} \equiv 1 \pmod{p}$ $\forall a$. 
+    \par \textbf{Time Complexity:} $\mathcal{O}(\sqrt(n))$ / $\mathcal{O}(n\log\log(n))$
+    \inputminted{cpp}{library/maths/euler_phi.hpp}
+  %\subsection{Binomial Coefficients}
+  %  \inputminted{cpp}{library/maths/binomial_coefficient.hpp}
+  \subsection{Matrix}
+    \par \textbf{Usage:} Basic operations on square matrices.
+    \inputminted{cpp}{library/maths/matrix.hpp}
+
+\section{Strings}
+  %\subsection{Trie}
+  %  \par \textbf{Usage:}
+  %  \\
+  %  \par \textbf{Time Complexity:} 
+  %  \inputminted{cpp}{library/strings/trie.hpp}
+  \subsection{Z function}
+    \par \textbf{Usage:}$z[i]$ computes the length of the longest common prefix of $s[i:]$ and $s$, except z[0] = 0. (abacaba -> 0010301)
+    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}(n)$
+    \inputminted{cpp}{library/strings/z_function.cpp}
+  \subsection{KMP}
+    \par \textbf{Usage:}$\pi[x]$ computes the length of the longest prefix of $s$ that ends at
+$x$, other than $s[0...x]$ itself (abacaba -> 0010123).
+    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}(n)$
+    \inputminted{cpp}{library/strings/kmp.hpp}
+  \subsection{Suffix Array}
+    \par \textbf{Usage:}Builds suffix array for a string.
+ \texttt{sa[i]} is the starting index of the suffix which
+ is $i$'th in the sorted suffix array.
+ The returned vector is of size $n+1$, and \texttt{sa[0] = n}.
+ The \texttt{lcp} array contains longest common prefixes for
+ neighbouring strings in the suffix array:
+ \texttt{lcp[i] = lcp(sa[i], sa[i-1])}, \texttt{lcp[0] = 0}.
+ The input string must not contain any nul chars.
+    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}(n \log n)$
+    \inputminted{cpp}{library/strings/suffix_array.hpp}
+
+  \subsection{Manacher's algorithm}
+    \par \textbf{Usage:}Computes palindrome radii on string $s$ interleaved with '\#'. Returns vector $d$ of size $2n+1$.
+    \begin{itemize}
+        \item $d[2i] = 2d_{even}[i] + 1$ (centered at '\#')
+        \item $d[2i + 1] = 2d_{odd}[i]$ (centered at $s[i]$)
+        \item Palindrome length = $d[i] - 1$.
+        \item Substring $s[L \dots R]$ is a palindrome iff $d[L + R + 1] - 1 \ge R - L + 1$.
+    \end{itemize}
+    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}(n)$
+    \inputminted{cpp}{library/strings/manacher.hpp}
+
+
+\section{Flows}
+  \subsection{Dinic Max Flow}
+    \par \textbf{Usage:}Flow algorithm with complexity $O(VE\log U)$ where $U = \max |\text{cap}|$.
+    \\
+    \par \textbf{Time Complexity:} $O(\min(E^{1/2}, V^{2/3})E)$ if $U = 1$; $O(\sqrt{V}E)$ for bipartite matching.
+    \inputminted{cpp}{library/flows/dinic.hpp}
+
+\section{Matching}
+
+  \subsection{Hopcroft-Karp Bipartite Matching}
+    \par \textbf{Usage:} Fast bipartite matching algorithm
+    \\
+    \par \textbf{Time Complexity:} $\mathcal{O}(\sqrt(|V|) |E|)$
+    \inputminted{cpp}{library/matching/hopcroft_karp.hpp}
+
+\section{Geometry}
+  %\subsection{Utility}
+    %\par \textbf{Usage:}
+    %\\
+    %\par \textbf{Time Complexity:} 
+    %\inputminted{cpp}{library/geo/geoutil.hpp}
+  \subsection{Point}
+    %\par \textbf{Usage:}
+    %\\
+    %\par \textbf{Time Complexity:} 
+    \inputminted{cpp}{library/geo/point.hpp}
+  \subsection{Polygon}
+    %\par \textbf{Usage:}
+    %\\
+    %\par \textbf{Time Complexity:} 
+    \inputminted{cpp}{library/geo/polygon.hpp}
