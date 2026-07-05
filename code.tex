@@ -201,6 +201,12 @@ keep in).
   %  \\
   %  \par \textbf{Time Complexity:} 
   %  \inputminted{cpp}{library/strings/trie.hpp}
+  \subsection{Double Polynomial Hash}
+    \par \textbf{Usage:} Forward hashing to compute the hash of any substring $s[L...R]$ (1-indexed) using two distinct prime moduli to prevent collision hacks. Call \texttt{DoubleHash(s)} to initialize. \texttt{get(L, R)} returns a \texttt{pair<int, int>} representing the two hashes in $\mathcal{O}(1)$ time. Global powers are automatically precomputed once.
+    \\
+    \par \textbf{Time Complexity:} Construction $\mathcal{O}(n)$, Query $\mathcal{O}(1)$
+    \inputminted{cpp}{library/strings/double_hash.cpp}
+
   \subsection{Z function}
     \par \textbf{Usage:}$z[i]$ computes the length of the longest common prefix of $s[i:]$ and $s$, except z[0] = 0. (abacaba -> 0010301)
     \\
