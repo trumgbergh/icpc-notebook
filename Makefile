@@ -3,6 +3,7 @@ OPTIONS   := -shell-escape -synctex=1 -interaction=nonstopmode \
 			-file-line-error -pdf -g
 TEX_FILES := $(wildcard *.tex)
 MAIN      := main.tex
+SOURCEDIR := library
 SOURCES   := $(shell find $(SOURCEDIR) -name '*.cc') \
 		     $(shell find $(SOURCEDIR) -name '*.cpp') \
 		     $(shell find $(SOURCEDIR) -name '*.h') \
