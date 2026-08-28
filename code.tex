@@ -1,8 +1,8 @@
 
 \section{Graph}
   \subsection{Bellman Ford}
-    \par \textbf{Usage:} Calculate shortest paths from $s$ in a graph that might have negative edge weights. 
-    Unreachable nodes get $dist = inf$; nodes reachable through negative-weight cycles get $dis = -inf$.
+    \par \textbf{Usage:} \texttt{bellmanFord(n, s, edges)} returns shortest distances from $s$ in a graph that might have negative edge weights.
+    Unreachable nodes get $dist = inf$; nodes reachable through negative-weight cycles get $dist = -inf$.
     Assume $V^2 max|w_i| < 2^{63}$. \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(VE)$
     \inputminted{cpp}{library/graphs/bellman_ford.cpp}
