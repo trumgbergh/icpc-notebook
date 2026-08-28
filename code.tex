@@ -246,10 +246,9 @@ keep in).
     \par \textbf{Time Complexity:} $\mathcal{O}(n)$
     \inputminted{cpp}{library/strings/z_function.cpp}
   \subsection{KMP}
-    \par \textbf{Usage:}$\pi[x]$ computes the length of the longest prefix of $s$ that ends at
-$x$, other than $s[0...x]$ itself (abacaba -> 0010123).
+    \par \textbf{Usage:} \texttt{pi[i]} is the length of the longest proper prefix of \texttt{pattern[0..i]} that is also a suffix of it (abacaba -> 0010123). \texttt{build\_automaton(nchar, base)} builds a DFA over an alphabet of size \texttt{nchar} starting at char \texttt{base}, where \texttt{aut[state][c]} is the number of pattern characters matched after reading \texttt{c} having already matched \texttt{state} characters; \texttt{state == n} means a full match ends at the current position (keep feeding characters to find overlapping matches).
     \\
-    \par \textbf{Time Complexity:} $\mathcal{O}(n)$
+    \par \textbf{Time Complexity:} $\mathcal{O}(n)$ for \texttt{build\_pi}, $\mathcal{O}(n \times \texttt{nchar})$ for \texttt{build\_automaton}
     \inputminted{cpp}{library/strings/kmp.hpp}
   \subsection{Suffix Array}
     \par \textbf{Usage:}Builds suffix array for a string.
