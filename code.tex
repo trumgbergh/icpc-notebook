@@ -110,13 +110,11 @@ to the segtree default. Root must be 0.
     \par \textbf{Usage:} Basic operations on square matrices
     \inputminted{cpp}{library/structures/matrix.cpp}
 
-  \subsection{Dynamic Li Chao tree}
-    \par \textbf{Usage:} Container where you can add segment of form kx+m, and query maximum/minimum values at point x.
-    Userful for dynamic programming ("convex hull trick").
-    Can be changed by modifying T, f and unit.
+  \subsection{Line Container}
+    \par \textbf{Usage:} Container of full lines $y=kx+m$ (any order); \texttt{add(k, m)} inserts a line, \texttt{query(x)} returns the max of $kx+m$ over all inserted lines. For min, negate $k$, $m$, and the query result. Useful for the convex hull trick in DP. Unlike a Li Chao tree, lines aren't restricted to a sub-range of $x$.
     \newline
-    \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$
-    \inputminted{cpp}{library/structures/lichao.cpp}
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$ amortized per operation
+    \inputminted{cpp}{library/structures/line_container.cpp}
 
   \subsection{RMQ}
     \par \textbf{Usage:} Range Minimum Queries on an array. Returns $min(V[a], V[a + 1], ... V[b - 1])$ in constant time.
