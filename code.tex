@@ -163,8 +163,12 @@ keep in).
     \inputminted{cpp}{library/structures/xor_basis.cpp}
 
 \section{Maths}
-  %\subsection{Modular Arithmetic}
-  %  \inputminted{cpp}{library/maths/mod.hpp}
+  \subsection{Modular Arithmetic}
+    \par \textbf{Usage:} Basic mod add/sub/mul/pow. Inputs must be pre-normalized to $[0, mod)$.
+    \inputminted{cpp}{library/maths/mod.hpp}
+  \subsection{Mod Inverse}
+    \par \textbf{Usage:} \texttt{modInv} works for any mod (extended Euclid); \texttt{modInvPrimeMod} is faster but needs a prime mod. \texttt{calcInv} computes inverses of $[1, n]$ in $\mathcal{O}(n)$.
+    \inputminted{cpp}{library/maths/mod_inverse.hpp}
   \subsection{Modnum}
     \inputminted{cpp}{library/maths/modnum.hpp}
   \subsection{Sieve of Eratosthenes}
@@ -210,8 +214,11 @@ keep in).
      \textbf{Fermat's little thm}: $p$ prime $\Rightarrow a^{p-1} \equiv 1 \pmod{p}$ $\forall a$. 
     \par \textbf{Time Complexity:} $\mathcal{O}(\sqrt(n))$ / $\mathcal{O}(n\log\log(n))$
     \inputminted{cpp}{library/maths/euler_phi.hpp}
-  %\subsection{Binomial Coefficients}
-  %  \inputminted{cpp}{library/maths/binomial_coefficient.hpp}
+  \subsection{Binomial Coefficients}
+    \par \textbf{Usage:} Precomputes factorials and inverse factorials mod $p$ to answer $\binom{n}{k} \bmod p$ queries in $\mathcal{O}(1)$.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(N)$ construction, $\mathcal{O}(1)$ per query
+    \inputminted{cpp}{library/maths/binomial_coefficient.hpp}
   \subsection{Matrix}
     \par \textbf{Usage:} Basic operations on square matrices.
     \inputminted{cpp}{library/maths/matrix.hpp}
