@@ -82,7 +82,7 @@ to the segtree default. Root must be 0.
     \inputminted{cpp}{library/graphs/dsu_on_tree.cpp}
 
   \subsection{Euler Path}
-    \par \textbf{Usage:} Eulerian undirected/directed path/cycle algorithm.
+    \par \textbf{Usage:} An Euler path uses every edge exactly once; a tour is a path that starts and ends at the same vertex $s$. Undirected: if every vertex has even degree, start $s$ anywhere (tour); if exactly two vertices have odd degree, start $s$ at one of them (path). Directed: if every vertex's in-degree equals its out-degree, start $s$ anywhere (tour); if exactly one vertex has one more outgoing edge than incoming, start $s$ there (path).
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N + E)$, where $N$ is the number of boolean variables, and $E$ is the number of clauses.
     \inputminted{cpp}{library/graphs/euler_path.cpp}
