@@ -89,8 +89,14 @@
 
 \section{Structures}
   \subsection{Order Statistic Tree}
-    \par \textbf{Usage:} A set (not a multiset) with support for finding the $n'$th element, and finding the index of an element. To get a map, change $null\_type$.
-    \\
+    \par \textbf{Usage:} A set (not a multiset), behaving like \texttt{std::set} (\texttt{insert}, \texttt{erase}, \texttt{find}, \texttt{lower\_bound}, \texttt{upper\_bound}, \texttt{begin}/\texttt{end}, \texttt{size}, \texttt{count}, \texttt{empty}) plus:
+    \begin{itemize}
+        \item \texttt{find\_by\_order(k)} --- iterator to the $k$-th smallest element (0-indexed).
+        \item \texttt{order\_of\_key(x)} --- number of elements strictly less than $x$ (its rank if present).
+        \item \texttt{join(other)} --- merges \texttt{other} into \texttt{*this}; requires every key in one to be less than every key in the other. Empties \texttt{other}.
+        \item \texttt{split(x, other)} --- \texttt{*this} keeps keys $\leq x$, \texttt{other} receives keys $> x$ (overwriting \texttt{other}).
+    \end{itemize}
+    To get a map, change \texttt{null\_type} to a value type.
     \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$
     \inputminted{cpp}{library/structures/order_tree.cpp}
 
