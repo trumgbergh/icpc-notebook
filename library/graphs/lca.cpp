@@ -15,8 +15,7 @@ struct Graph {
 
     Graph(int n_) : n(n_), adj(n), depth(n, 0) {
         log_h_max = 1;
-        while ((1 << log_h_max++) <= n)
-            ;
+        while ((1 << log_h_max++) <= n);
         p.resize(n, vector<int>(log_h_max, -1));
     }
 
