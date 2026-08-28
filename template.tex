@@ -1,10 +1,35 @@
 \section{Template}
   \subsection{Makefile}
     \inputminted{bash}{library/template/Makefile}
+  \subsection{Windows Compile Script (.bat)}
+    \par \textbf{Usage:} For lab machines without \texttt{make}. Compiles \texttt{main.cpp} with warnings, \texttt{dbg()}, and sanitizers all enabled.
+    \inputminted{bat}{library/template/compile.bat}
+  \subsection{Compile Flags}
+    \par \textbf{Usage:} Flags to remember when compiling by hand.
+    \begin{itemize}
+        \item \texttt{-std=c++17} --- language standard.
+        \item \texttt{-O2} --- optimize; use for the real submission/timing build.
+        \item \texttt{-Wall -Wextra -Wshadow -pedantic} --- catch likely bugs at compile time.
+        \item \texttt{-DLOCAL} --- defines \texttt{LOCAL}, enabling \texttt{dbg()} via \texttt{\#ifdef LOCAL} (see dbg.h below). Never submit a binary built with this.
+        \item \texttt{-g} --- debug symbols, needed to step through with gdb/lldb.
+        \item \texttt{-fsanitize=address} --- catches out-of-bounds array/vector access, use-after-free, buffer overflows.
+        \item \texttt{-fsanitize=undefined} --- catches undefined behavior: signed overflow, invalid shifts, null dereference, etc.
+        \item \texttt{-fno-sanitize-recover=undefined} --- abort on the first UB instead of continuing, for a clean first-failure trace.
+    \end{itemize}
+    For a debug build, combine all of the above: \texttt{-O0 -g -DLOCAL -fsanitize=address,undefined -fno-sanitize-recover=undefined}. Use \texttt{-O0}, not \texttt{-O2}, with sanitizers for accurate stack traces. \\
+    \par \textbf{Note:} AddressSanitizer support on MinGW/Windows g++ varies by version --- test it on the lab machines beforehand. \texttt{-fsanitize=undefined} alone is more portable if ASan misbehaves.
   \subsection{vimrc}
     \inputminted{vim}{library/template/.vimrc}
   \subsection{Stress testing}
     \inputminted{bash}{library/template/stress.sh}
   \subsection{dbg.h}
+    \par \textbf{Usage:} Guard the include so \texttt{dbg()} calls compile away entirely on the judge, then build locally with \texttt{-DLOCAL} (see Compile Flags):
+\begin{minted}{cpp}
+#ifdef LOCAL
+#include "dbg.h"
+#else
+#define dbg(...)
+#endif
+\end{minted}
     \inputminted{cpp}{library/template/dbg.h}
 
