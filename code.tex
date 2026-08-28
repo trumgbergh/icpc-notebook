@@ -124,11 +124,17 @@ to the segtree default. Root must be 0.
 step to add/remove the edge (a, c) and remove the initial add call (but
 keep in).
     \inputminted{cpp}{library/structures/mo.cpp}
-  \subsection{Online mo}
+  \subsection{Mo's Algorithm with Updates}
     \par \textbf{Usage:} Decompose array into blocks of size $S$ and sort queries that ask for sum, firstly based on the block which $l$ lies in and secondly by the block that $r$ lies in and finally by $t$. $t$ is the number of the update queries before this query.
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(S q + qn^2 /S^2)$
-    \inputminted{cpp}{library/structures/online_mo.cpp}
+    \inputminted{cpp}{library/structures/mo_with_updates.cpp}
+
+  \subsection{Sqrt Decomposition}
+    \par \textbf{Usage:} Range add, range sum on an array by splitting it into $\mathcal{O}(\sqrt N)$-sized blocks with a lazy add per block.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(\sqrt N)$ per update/query
+    \inputminted{cpp}{library/structures/sqrt_decomp.cpp}
 
   \subsection{Fenwick Tree}
     \par \textbf{Usage:}  Computes partial sums $a[0] + a[1] + ... + a[pos - 1]$, and updates single elements $a[i]$,
