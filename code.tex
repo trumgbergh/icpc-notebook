@@ -64,6 +64,11 @@
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N \log N)$ build, $\mathcal{O}(\log N)$ per query
     \inputminted{cpp}{library/graphs/lca.cpp}
+  \subsection{Euler Tour (Tree Flattening)}
+    \par \textbf{Usage:} \texttt{addEdge} + \texttt{dfs(root, -1)} flattens the tree by entry time \texttt{tin}. \texttt{update(v, x)} sets node $v$'s value to $x$ (call once per node to initialize, then again to update). \texttt{pathFromRoot(v)} sums values from the root to $v$. \texttt{pathSum(a, b, lca)} sums values on the path from $a$ to $b$ given \texttt{lca}$(a,b)$ (see LCA above). \texttt{subtreeSum(v)} sums values in the subtree of $v$. For path \emph{updates} (not just point updates), use HLD instead.
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(N)$ build, $\mathcal{O}(\log N)$ per update/query
+    \inputminted{cpp}{library/graphs/euler_tour.cpp}
   \subsection{HLD}
     \par \textbf{Usage:} Decomposes a tree into vertex disjoint heavy paths and light edges such that the path from any leaf to the root contains at most log(n) light edges.
 Code does additive modifications and max queries, but can
