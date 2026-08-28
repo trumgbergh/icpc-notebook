@@ -47,20 +47,22 @@
             Law of cosines: $a^2 = b^2 + c^2 - bc \cos \alpha$ \\
             Law of tangents: $\frac{a + b}{a - b} = \frac{\tan \frac{\alpha + \beta}{2}}{\tan \frac{\alpha - \beta}{2}}$
         \subsubsection{Vectors}
-            For points $A(a_x, a_y), B(b_x, b_y), P(p_x, p_y)$, vectors $\vec u, \vec v$, and lines written as $ax + by + c = 0$: \\
-            Dot product: $\vec u \cdot \vec v = |\vec u||\vec v|\cos\theta = u_x v_x + u_y v_y$ \\
-            Cross product (signed area of parallelogram): $\vec u \times \vec v = u_x v_y - u_y v_x$ \\
-            Projection of $\vec u$ onto $\vec v$: $\mathrm{proj}_{\vec v}\vec u = \frac{\vec u \cdot \vec v}{|\vec v|^2}\vec v$ \\
-            Line through $A, B$: $a = b_y - a_y,\ b = a_x - b_x,\ c = -(a \cdot a_x + b \cdot a_y)$ \\
-            Distance from $P$ to line $ax + by + c = 0$: $\frac{|a p_x + b p_y + c|}{\sqrt{a^2 + b^2}}$ \\
-            Perpendicular bisector of segment $AB$: $a = 2(b_x - a_x),\ b = 2(b_y - a_y),\ c = (a_x^2 + a_y^2) - (b_x^2 + b_y^2)$ \\
-            Angle bisectors of lines $a_1x + b_1y + c_1 = 0$ and $a_2x + b_2y + c_2 = 0$ (points equidistant from both; the $+$ and $-$ roots give the two perpendicular bisectors, one internal and one external):
-            $$\frac{a_1 x + b_1 y + c_1}{\sqrt{a_1^2 + b_1^2}} = \pm\frac{a_2 x + b_2 y + c_2}{\sqrt{a_2^2 + b_2^2}}$$
-            Reflection of $P$ across line $ax + by + c = 0$: with $d = \frac{a p_x + b p_y + c}{a^2 + b^2}$, $P' = (p_x - 2ad,\ p_y - 2bd)$ \\
-            Rotate $P$ about the origin by $\theta$ (CCW): $(x\cos\theta - y\sin\theta,\ x\sin\theta + y\cos\theta)$ \\
-            Circumcenter $O$ of $A, B, C$ (let $D = 2\bigl(A_x(B_y - C_y) + B_x(C_y - A_y) + C_x(A_y - B_y)\bigr)$, $|A|^2 = A_x^2 + A_y^2$):
-            $$O_x = \frac{|A|^2(B_y - C_y) + |B|^2(C_y - A_y) + |C|^2(A_y - B_y)}{D}$$
-            $$O_y = \frac{|A|^2(C_x - B_x) + |B|^2(A_x - C_x) + |C|^2(B_x - A_x)}{D}$$
+            For points $A(a_x, a_y), B(b_x, b_y), P(p_x, p_y)$, vectors $\vec u, \vec v$, and lines written as $ax + by + c = 0$:
+            \begin{itemize}
+                \item Dot product: $\vec u \cdot \vec v = |\vec u||\vec v|\cos\theta = u_x v_x + u_y v_y$
+                \item Cross product (signed area of parallelogram): $\vec u \times \vec v = u_x v_y - u_y v_x$
+                \item Projection of $\vec u$ onto $\vec v$: $\mathrm{proj}_{\vec v}\vec u = \frac{\vec u \cdot \vec v}{|\vec v|^2}\vec v$
+                \item Line through $A, B$: $a = b_y - a_y,\ b = a_x - b_x,\ c = -(a \cdot a_x + b \cdot a_y)$
+                \item Distance from $P$ to line $ax + by + c = 0$: $\frac{|a p_x + b p_y + c|}{\sqrt{a^2 + b^2}}$
+                \item Perpendicular bisector of segment $AB$: $a = 2(b_x - a_x),\ b = 2(b_y - a_y),\ c = (a_x^2 + a_y^2) - (b_x^2 + b_y^2)$
+                \item Angle bisectors of lines $a_1x + b_1y + c_1 = 0$ and $a_2x + b_2y + c_2 = 0$ (points equidistant from both; the $+$ and $-$ roots give the two perpendicular bisectors, one internal and one external):
+                $$\frac{a_1 x + b_1 y + c_1}{\sqrt{a_1^2 + b_1^2}} = \pm\frac{a_2 x + b_2 y + c_2}{\sqrt{a_2^2 + b_2^2}}$$
+                \item Reflection of $P$ across line $ax + by + c = 0$: with $d = \frac{a p_x + b p_y + c}{a^2 + b^2}$, $P' = (p_x - 2ad,\ p_y - 2bd)$
+                \item Rotate $P$ about the origin by $\theta$ (CCW): $(x\cos\theta - y\sin\theta,\ x\sin\theta + y\cos\theta)$
+                \item Circumcenter $O$ of $A, B, C$ (let $D = 2\bigl(A_x(B_y - C_y) + B_x(C_y - A_y) + C_x(A_y - B_y)\bigr)$, $|A|^2 = A_x^2 + A_y^2$):
+                $$O_x = \frac{|A|^2(B_y - C_y) + |B|^2(C_y - A_y) + |C|^2(A_y - B_y)}{D}$$
+                $$O_y = \frac{|A|^2(C_x - B_x) + |B|^2(A_x - C_x) + |C|^2(B_x - A_x)}{D}$$
+            \end{itemize}
     \subsection{Derivatives/Integrals}
         \[
         \renewcommand{\arraystretch}{1.4}       % a bit more vertical space
