@@ -1,9 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int inf = 1e9;
+// inf must stay far outside the range of any real value/delta the problem
+// can produce -- it doubles as both "unset" and "no overlap" sentinel, so a
+// real value drifting anywhere near it (e.g. via repeated negative adds)
+// would silently corrupt max() comparisons against it.
+const int64_t inf = (int64_t)4e18;
 struct Node {
     Node *l = 0, *r = 0;
-    int lo, hi, mset = inf, madd = 0, val = -inf;
+    int lo, hi;
+    int64_t mset = inf, madd = 0, val = -inf;
     Node(int lo, int hi) : lo(lo), hi(hi) {}  // Large interval of -inf
     Node(vector<int>& v, int lo, int hi) : lo(lo), hi(hi) {
         if (lo + 1 < hi) {
@@ -14,7 +19,7 @@ struct Node {
         } else
             val = v[lo];
     }
-    int query(int L, int R) {
+    int64_t query(int L, int R) {
         if (R <= lo || hi <= L) return -inf;
         if (L <= lo && hi <= R) return val;
         push();

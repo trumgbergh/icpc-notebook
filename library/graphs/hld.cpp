@@ -46,12 +46,15 @@ struct HLD {
     void modifyPath(int u, int v, int val) {
         process(u, v, [&](int l, int r) { tree->add(l, r, val); });
     }
-    int queryPath(int u, int v) {  // Modify depending on problem
-        int res = -1e9;
+    int64_t queryPath(int u, int v) {  // Modify depending on problem
+        int64_t res = INT64_MIN;
         process(u, v, [&](int l, int r) { res = max(res, tree->query(l, r)); });
         return res;
     }
-    int querySubtree(int v) {  // modifySubtree is similar
+    int64_t querySubtree(int v) {
         return tree->query(pos[v] + VALS_EDGES, pos[v] + siz[v]);
+    }
+    void modifySubtree(int v, int val) {
+        tree->add(pos[v] + VALS_EDGES, pos[v] + siz[v], val);
     }
 };

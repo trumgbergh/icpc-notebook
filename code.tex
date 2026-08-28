@@ -70,12 +70,7 @@
     \par \textbf{Time Complexity:} $\mathcal{O}(N)$ build, $\mathcal{O}(\log N)$ per update/query
     \inputminted{cpp}{library/graphs/euler_tour.cpp}
   \subsection{HLD}
-    \par \textbf{Usage:} Decomposes a tree into vertex disjoint heavy paths and light edges such that the path from any leaf to the root contains at most log(n) light edges.
-Code does additive modifications and max queries, but can
-support commutative segtree modifications/queries on paths and subtrees.
-Takes as input the full adjacency list. VALS EDGES being true means that
-values are stored in the edges, as opposed to the nodes. All values initialized
-to the segtree default. Root must be 0.
+    \par \textbf{Usage:} Decomposes a tree into heavy paths for additive path/subtree updates and max queries. Takes the full adjacency list; root must be 0; VALS\_EDGES stores values on edges instead of nodes. Initialize values with \texttt{tree->set(pos[v], pos[v]+1, x)}, not \texttt{add} (default is $-\infty$).
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}((\log N)^2)$
     \inputminted{cpp}{library/graphs/hld.cpp}
