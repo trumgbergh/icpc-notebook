@@ -107,3 +107,17 @@ struct Point {
         return 2 * PI - (b - a).angle(c - a);
     }
 };
+
+// Intersection point of infinite lines p1p2 and p3p4. Returns false if
+// parallel/collinear (no unique intersection). For segments, additionally
+// check the result lies within both with onSegment().
+template <typename T>
+bool lineIntersection(Point<T> p1, Point<T> p2, Point<T> p3, Point<T> p4,
+                      Point<double> &out) {
+    T d = (p2 - p1).cross(p4 - p3);
+    if (d == 0) return false;
+    double t = (double)(p3 - p1).cross(p4 - p3) / (double)d;
+    out = Point<double>((double)p1.x + t * (double)(p2.x - p1.x),
+                        (double)p1.y + t * (double)(p2.y - p1.y));
+    return true;
+}

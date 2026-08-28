@@ -297,15 +297,19 @@ keep in).
     %\par \textbf{Time Complexity:} 
     %\inputminted{cpp}{library/geo/geoutil.hpp}
   \subsection{Point}
-    %\par \textbf{Usage:}
-    %\\
-    %\par \textbf{Time Complexity:} 
+    \par \textbf{Usage:} \texttt{lineIntersection(p1, p2, p3, p4, out)} finds where infinite lines $p_1p_2$ and $p_3p_4$ cross, returning false if parallel/collinear. For segments, also check \texttt{onSegment} on the result.
+    \newline
     \inputminted{cpp}{library/geo/point.hpp}
   \subsection{Polygon}
     \par \textbf{Usage:} Area, lattice point counts, convexity check, point-in-polygon, and \texttt{convexHull(points)} (monotone chain, returns a \texttt{Polygon} in CCW order).
     \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(n)$ for polygon ops, $\mathcal{O}(n \log n)$ for \texttt{convexHull}
     \inputminted{cpp}{library/geo/polygon.hpp}
+  \subsection{Closest Pair}
+    \par \textbf{Usage:} \texttt{closestPairSq(points)} returns the squared distance between the closest pair of points (take $\sqrt{\cdot}$ for the actual distance).
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(n \log n)$
+    \inputminted{cpp}{library/geo/closest_pair.hpp}
 
 \section{Game Theory \& Combinatorial Games}
 
