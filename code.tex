@@ -298,9 +298,9 @@ $x$, other than $s[0...x]$ itself (abacaba -> 0010123).
     %\par \textbf{Time Complexity:} 
     \inputminted{cpp}{library/geo/point.hpp}
   \subsection{Polygon}
-    %\par \textbf{Usage:}
-    %\\
-    %\par \textbf{Time Complexity:} 
+    \par \textbf{Usage:} Area, lattice point counts, convexity check, point-in-polygon, and \texttt{convexHull(points)} (monotone chain, returns a \texttt{Polygon} in CCW order).
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(n)$ for polygon ops, $\mathcal{O}(n \log n)$ for \texttt{convexHull}
     \inputminted{cpp}{library/geo/polygon.hpp}
 
 \section{Game Theory \& Combinatorial Games}
