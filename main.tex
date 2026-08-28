@@ -44,6 +44,17 @@
 
 \usepackage{indentfirst}
 
+% Consistent paragraph spacing (e.g. between a Usage blurb and its Time
+% Complexity line) without relying on manually adding \newline/\\ everywhere.
+\setlength{\parskip}{0.5em}
+
+% KOMA's default section spacing uses \addvspace to avoid double-spacing,
+% which doesn't know about upcoming multicol column breaks -- this makes the
+% gap after a heading balloon whenever it lands at the top of a fresh column.
+% Fixed, non-addvspace skips sidestep that.
+\RedeclareSectionCommand[beforeskip=1em, afterskip=0.4em]{subsection}
+\RedeclareSectionCommand[beforeskip=1em, afterskip=0.4em]{subsubsection}
+
 \begin{document}
   \begin{multicols*}{3}
     \tableofcontents

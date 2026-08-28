@@ -3,7 +3,7 @@
   \subsection{Bellman Ford}
     \par \textbf{Usage:} \texttt{bellmanFord(n, s, edges)} returns shortest distances from $s$ in a graph that might have negative edge weights.
     Unreachable nodes get $dist = inf$; nodes reachable through negative-weight cycles get $dist = -inf$.
-    Assume $V^2 max|w_i| < 2^{63}$. \newline
+    Assume $V^2 max|w_i| < 2^{63}$.
     \par \textbf{Time Complexity:} $\mathcal{O}(VE)$
     \inputminted{cpp}{library/graphs/bellman_ford.cpp}
 
@@ -11,38 +11,32 @@
     \par \textbf{Usage:} Calculates all-pairs shortest path in a directed graph that might have negative edge weights.
     Input is an distance matrix $m$, where $m[i][j] = inf$ if $i$ and $j$ are not adjacent.
     As output, $m[i][j]$ is set to the shortest distance between $i$ and $j$, $inf$ if no path, or $-inf$ if the path goes thorugh a negative-weight cycle.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(n^3)$
     \inputminted{cpp}{library/graphs/floyd_warshall.cpp}
 
   \subsection{Topological Sort}
     \par \textbf{Usage:} Returns a valid linear ordering of a DAG.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(V + E)$
     \inputminted{cpp}{library/graphs/topo_sort.cpp}
 
   \subsection{Dijkstra}
     \par \textbf{Usage:} Finding the shortest paths from a single starting node $s$ to all other nodes in the graph where edge weights are non-negative.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}((V + E)\log V)$
     \inputminted{cpp}{library/graphs/dijkstra.cpp}
 
   \subsection{XY BFS}
     \par \textbf{Usage:} Use queue to find shortest path from single source when all edges have weight $W = X$ or $W = Y (X, Y >= 0)$
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N + M)$
     \inputminted{cpp}{library/graphs/xy_bfs.cpp}
 
   \subsection{Strongly Connected Components}
     \par \textbf{Usage:} Finds strongly connected components in a directed graph.
     If vertices $u, v$ belong to the same component, we can reach $u$ from $v$ and vice versa.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N + M)$
     \inputminted{cpp}{library/graphs/scc.cpp}
 
   \subsection{Brige \& Articulation Points}
     \par \textbf{Usage:} Find bridges and articulation points (duplicate edges are ok).
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N + M)$
     \inputminted{cpp}{library/graphs/bridge_articulationpoints.cpp}
   %\subsection{Floyd Warshall}
@@ -56,34 +50,28 @@
   \subsection{2SAT}
     \par \textbf{Usage:} Calculates a valid assignment to boolean variables $a, b, c,...$ to a $2-SAT$ problem so that an expresion becomes true, or reports that it is unsatisfiable.
     Negated variables are represented by bit-inversions ($~x$).
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N + E)$, where $N$ is the number of boolean variables, and $E$ is the number of clauses.
     \inputminted{cpp}{library/graphs/twosat.cpp}
   \subsection{LCA (Binary Lifting)}
     \par \textbf{Usage:} Finds the lowest common ancestor of two nodes via a $2^j$-th ancestor table built by DFS from the root.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N \log N)$ build, $\mathcal{O}(\log N)$ per query
     \inputminted{cpp}{library/graphs/lca.cpp}
   \subsection{Euler Tour (Tree Flattening)}
     \par \textbf{Usage:} \texttt{addEdge} + \texttt{dfs(root, -1)} flattens the tree by entry time \texttt{tin}. \texttt{update(v, x)} sets node $v$'s value to $x$ (call once per node to initialize, then again to update). \texttt{pathFromRoot(v)} sums values from the root to $v$. \texttt{pathSum(a, b, lca)} sums values on the path from $a$ to $b$ given \texttt{lca}$(a,b)$ (see LCA above). \texttt{subtreeSum(v)} sums values in the subtree of $v$. For path \emph{updates} (not just point updates), use HLD instead.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N)$ build, $\mathcal{O}(\log N)$ per update/query
     \inputminted{cpp}{library/graphs/euler_tour.cpp}
   \subsection{HLD}
     \par \textbf{Usage:} Decomposes a tree into heavy paths for additive path/subtree updates and max queries. Takes the full adjacency list; root must be 0; VALS\_EDGES stores values on edges instead of nodes. Initialize values with \texttt{tree->set(pos[v], pos[v]+1, x)}, not \texttt{add} (default is $-\infty$).
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}((\log N)^2)$
     \inputminted{cpp}{library/graphs/hld.cpp}
 
   \subsection{DSU on Tree (Small to Large)}
     \par \textbf{Usage:} Answers subtree queries offline in $\mathcal{O}(N \log N)$ by reusing the heavy child's data and merging only the light children's.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N \log N)$
     \inputminted{cpp}{library/graphs/dsu_on_tree.cpp}
 
   \subsection{Euler Path}
     \par \textbf{Usage:} An Euler path uses every edge exactly once; a tour is a path that starts and ends at the same vertex $s$. Undirected: if every vertex has even degree, start $s$ anywhere (tour); if exactly two vertices have odd degree, start $s$ at one of them (path). Directed: if every vertex's in-degree equals its out-degree, start $s$ anywhere (tour); if exactly one vertex has one more outgoing edge than incoming, start $s$ there (path).
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N + E)$, where $N$ is the number of boolean variables, and $E$ is the number of clauses.
     \inputminted{cpp}{library/graphs/euler_path.cpp}
 
@@ -103,7 +91,6 @@
   \subsection{Union-Find Rollback}
     \par \textbf{Usage:} Disjoint-set data structure with undo.
     If undo is not needed, skip st, time() and rollback().
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$
     \inputminted{cpp}{library/structures/dsu.hpp}
 
@@ -113,13 +100,11 @@
 
   \subsection{Line Container}
     \par \textbf{Usage:} Container of full lines $y=kx+m$ (any order); \texttt{add(k, m)} inserts a line, \texttt{query(x)} returns the max of $kx+m$ over all inserted lines. For min, negate $k$, $m$, and the query result. Useful for the convex hull trick in DP. Unlike a Li Chao tree, lines aren't restricted to a sub-range of $x$.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log n)$ amortized per operation
     \inputminted{cpp}{library/structures/line_container.cpp}
 
   \subsection{RMQ}
     \par \textbf{Usage:} Range Minimum Queries on an array. Returns $min(V[a], V[a + 1], ... V[b - 1])$ in constant time.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(1)$
     \inputminted{cpp}{library/structures/sparse_table.hpp}
   \subsection{Mo's algorithm}
@@ -130,34 +115,29 @@ keep in).
     \inputminted{cpp}{library/structures/mo.cpp}
   \subsection{Mo's Algorithm with Updates}
     \par \textbf{Usage:} Decompose array into blocks of size $S$ and sort queries that ask for sum, firstly based on the block which $l$ lies in and secondly by the block that $r$ lies in and finally by $t$. $t$ is the number of the update queries before this query.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(S q + qn^2 /S^2)$
     \inputminted{cpp}{library/structures/mo_with_updates.cpp}
 
   \subsection{Sqrt Decomposition}
     \par \textbf{Usage:} Range add, range sum on an array by splitting it into $\mathcal{O}(\sqrt N)$-sized blocks with a lazy add per block.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\sqrt N)$ per update/query
     \inputminted{cpp}{library/structures/sqrt_decomp.cpp}
 
   \subsection{Fenwick Tree}
     \par \textbf{Usage:}  Computes partial sums $a[0] + a[1] + ... + a[pos - 1]$, and updates single elements $a[i]$,
  * taking the difference between the old and new value.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log N)$
     \inputminted{cpp}{library/structures/fenwick.cpp}
 
   \subsection{Fenwick Tree 2D}
     \par \textbf{Usage:} Computes sums $a[i,j]$ for all $i<I$, $j<J$, and increases single elements $a[i,j]$.
     Requires that the elements to be updated are known in advance (call fakeUpdate() before init()).
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log^2 N)$
     \inputminted{cpp}{library/structures/fenwick2d.cpp}
 
   \subsection{Lazy segment tree}
     \par \textbf{Usage:} Segment tree with ability to add or set values of large intervals, and compute max of intervals.
     Node* tr = new Node(v, 0, sz(v));
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log N)$
     \inputminted{cpp}{library/structures/lazytree.cpp}
 
@@ -181,14 +161,13 @@ keep in).
     \inputminted{cpp}{library/maths/sieve.cpp}
   \subsection{Segmented Sieve of Eratosthenes}
     \par \textbf{Usage:} Sometimes we need to find all prime numbers in a range $[L, R]$ of small size (e.g. $R - L + 1 \approx 1e7$), where $R$ can be very large (e.g. $1e12$). Requires $L \geq 1$.
-%    \\
+%
     \par \textbf{Time Complexity:} $\mathcal{O}((R - L + 1)\log \log(R) + \sqrt(R) \log \log(\sqrt(R)))$
     \inputminted{cpp}{library/maths/segmented_sieve.cpp}
   \subsection{FFT}
     \par \textbf{Usage:} fft(a) computes $\hat f(k) = \sum_x a[x] \exp(2\pi i \cdot k x / N)$ for all $k$. N must be a power of 2.
    Useful for convolution:
    \texttt{conv(a, b) = c}, where $c[x] = \sum a[i]b[x-i]$.
-    \\
     \par \textbf{Time Complexity:} $\mathcal{O}(N \log N)$ with $N = |A| + |B|$
 
     \inputminted{cpp}{library/maths/fft.cpp}
@@ -201,13 +180,11 @@ keep in).
     \par \textbf{Usage:} Finds two integers $x$ and $y$, such that $ax+by=\gcd(a,b)$. If
  you just need gcd, use the built in \texttt{\_\_gcd} instead.
  If $a$ and $b$ are coprime, then $x$ is the inverse of $a \pmod{b}$.
-    \\
     \par \textbf{Time Complexity:} $\mathcal{O}(\log \min(a, b)$
 
     \inputminted{cpp}{library/maths/euclid.h}
   \subsection{Chinese Remainder Theorem}
     \par \textbf{Usage:} Finds $x \equiv a \pmod m$, $x \equiv b \pmod n$ (moduli need not be coprime).
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(\log(m + n))$
     \inputminted{cpp}{library/maths/crt.hpp}
   \subsection{Euler's Totient Function}
@@ -221,7 +198,6 @@ keep in).
     \inputminted{cpp}{library/maths/euler_phi.hpp}
   \subsection{Binomial Coefficients}
     \par \textbf{Usage:} Precomputes factorials and inverse factorials mod $p$ to answer $\binom{n}{k} \bmod p$ queries in $\mathcal{O}(1)$.
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(N)$ construction, $\mathcal{O}(1)$ per query
     \inputminted{cpp}{library/maths/binomial_coefficient.hpp}
   \subsection{Matrix}
@@ -236,18 +212,15 @@ keep in).
   %  \inputminted{cpp}{library/strings/trie.hpp}
   \subsection{Double Polynomial Hash}
     \par \textbf{Usage:} Forward hashing to compute the hash of any substring $s[L...R]$ (1-indexed) using two distinct prime moduli to prevent collision hacks. Call \texttt{HashPair(s)} to initialize. \texttt{.calc(L, R)} returns a \texttt{pair<int, int>} representing the two hashes in $\mathcal{O}(1)$ time. Global powers are automatically precomputed once.
-    \\
     \par \textbf{Time Complexity:} Construction $\mathcal{O}(n)$, Query $\mathcal{O}(1)$
     \inputminted{cpp}{library/strings/double_hash.cpp}
 
   \subsection{Z function}
     \par \textbf{Usage:}$z[i]$ computes the length of the longest common prefix of $s[i:]$ and $s$, except z[0] = 0. (abacaba -> 0010301)
-    \\
     \par \textbf{Time Complexity:} $\mathcal{O}(n)$
     \inputminted{cpp}{library/strings/z_function.cpp}
   \subsection{KMP}
     \par \textbf{Usage:} \texttt{pi[i]} is the length of the longest proper prefix of \texttt{pattern[0..i]} that is also a suffix of it (abacaba -> 0010123). \texttt{build\_automaton(nchar, base)} builds a DFA over an alphabet of size \texttt{nchar} starting at char \texttt{base}, where \texttt{aut[state][c]} is the number of pattern characters matched after reading \texttt{c} having already matched \texttt{state} characters; \texttt{state == n} means a full match ends at the current position (keep feeding characters to find overlapping matches).
-    \\
     \par \textbf{Time Complexity:} $\mathcal{O}(n)$ for \texttt{build\_pi}, $\mathcal{O}(n \times \texttt{nchar})$ for \texttt{build\_automaton}
     \inputminted{cpp}{library/strings/kmp.hpp}
   \subsection{Suffix Array}
@@ -259,7 +232,6 @@ keep in).
  neighbouring strings in the suffix array:
  \texttt{lcp[i] = lcp(sa[i], sa[i-1])}, \texttt{lcp[0] = 0}.
  The input string must not contain any nul chars.
-    \\
     \par \textbf{Time Complexity:} $\mathcal{O}(n \log n)$
     \inputminted{cpp}{library/strings/suffix_array.hpp}
 
@@ -278,7 +250,6 @@ keep in).
 \section{Flows}
   \subsection{Dinic Max Flow}
     \par \textbf{Usage:}Flow algorithm with complexity $O(VE\log U)$ where $U = \max |\text{cap}|$.
-    \\
     \par \textbf{Time Complexity:} $O(\min(E^{1/2}, V^{2/3})E)$ if $U = 1$; $O(\sqrt{V}E)$ for bipartite matching.
     \inputminted{cpp}{library/flows/dinic.hpp}
 
@@ -286,7 +257,6 @@ keep in).
 
   \subsection{Hopcroft-Karp Bipartite Matching}
     \par \textbf{Usage:} Fast bipartite matching algorithm
-    \\
     \par \textbf{Time Complexity:} $\mathcal{O}(\sqrt(|V|) |E|)$
     \inputminted{cpp}{library/matching/hopcroft_karp.hpp}
 
@@ -302,12 +272,10 @@ keep in).
     \inputminted{cpp}{library/geo/point.hpp}
   \subsection{Polygon}
     \par \textbf{Usage:} Area, lattice point counts, convexity check, point-in-polygon, and \texttt{convexHull(points)} (monotone chain, returns a \texttt{Polygon} in CCW order).
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(n)$ for polygon ops, $\mathcal{O}(n \log n)$ for \texttt{convexHull}
     \inputminted{cpp}{library/geo/polygon.hpp}
   \subsection{Closest Pair}
     \par \textbf{Usage:} \texttt{closestPairSq(points)} returns the squared distance between the closest pair of points (take $\sqrt{\cdot}$ for the actual distance).
-    \newline
     \par \textbf{Time Complexity:} $\mathcal{O}(n \log n)$
     \inputminted{cpp}{library/geo/closest_pair.hpp}
 
