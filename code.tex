@@ -180,6 +180,11 @@ keep in).
     \par \textbf{Time Complexity:} $\mathcal{O}(\log \min(a, b)$
 
     \inputminted{cpp}{library/maths/euclid.h}
+  \subsection{Chinese Remainder Theorem}
+    \par \textbf{Usage:} Finds $x \equiv a \pmod m$, $x \equiv b \pmod n$ (moduli need not be coprime).
+    \newline
+    \par \textbf{Time Complexity:} $\mathcal{O}(\log(m + n))$
+    \inputminted{cpp}{library/maths/crt.hpp}
   \subsection{Euler's Totient Function}
     \par \textbf{Usage:} \emph{Euler's $\phi$} function is defined as $\phi(n):=\#$ of positive integers $\leq n$ that are coprime with $n$.
   $\phi(1)=1$, $p$ prime $\Rightarrow \phi(p^k)=(p-1)p^{k-1}$, $m,n$ coprime $\Rightarrow \phi(mn)=\phi(m)\phi(n)$.
