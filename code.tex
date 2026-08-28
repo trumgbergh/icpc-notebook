@@ -174,12 +174,13 @@ keep in).
     \par \textbf{Usage:} \texttt{modInv} works for any mod (extended Euclid); \texttt{modInvPrimeMod} is faster but needs a prime mod. \texttt{calcInv} computes inverses of $[1, n]$ in $\mathcal{O}(n)$.
     \inputminted{cpp}{library/maths/mod_inverse.hpp}
   \subsection{Modnum}
+    \par \textbf{Usage:} Edit the hardcoded \texttt{mod} constant at the top of the file before use.
     \inputminted{cpp}{library/maths/modnum.hpp}
   \subsection{Sieve of Eratosthenes}
     \par \textbf{Usage:}Prime sieve for generating all primes up to a certain limit. isPrime$[i]$ is true iff $i$ is a prime.
     \inputminted{cpp}{library/maths/sieve.cpp}
   \subsection{Segmented Sieve of Eratosthenes}
-    \par \textbf{Usage:} Sometimes we need to find all prime numbers in a range $[L, R]$ of small size (e.g. $R - L + 1 \approx 1e7$), where $R$ can be very large (e.g. $1e12$). 
+    \par \textbf{Usage:} Sometimes we need to find all prime numbers in a range $[L, R]$ of small size (e.g. $R - L + 1 \approx 1e7$), where $R$ can be very large (e.g. $1e12$). Requires $L \geq 1$.
 %    \\
     \par \textbf{Time Complexity:} $\mathcal{O}((R - L + 1)\log \log(R) + \sqrt(R) \log \log(\sqrt(R)))$
     \inputminted{cpp}{library/maths/segmented_sieve.cpp}
